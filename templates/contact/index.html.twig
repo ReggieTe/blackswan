@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home page{% endblock %}
+
+{% block body %}
+
+<section class="ui container">
+<style>
+.form
+{
+    margin-top:100px;
+}
+</style>
+    <form class="ui form" action="contact" method="get">
+    <div class="text text-warning"> {{message}} </div>
+    <h3>Contact Us</h3>
+        <div class="field">
+            <label>Name</label>
+            <input type="text" name="name" value="{{form['name']['value']}}">
+        </div>
+        <div class="field">
+            <label>Phone</label>
+            <input type="text" name="phone" value="{{form['phone']['value']}}">
+        </div>
+        <div class="field">
+            <label>Email</label>
+            <input type="email" name="email" value="{{form['email']['value']}}">
+        </div>
+
+        <div class="field">
+            <label>Message</label>
+            <textarea type="text" name="message" rows="10">{{form['message']['value']}}</textarea>
+        </div>
+        <button class="ui button col-md-6 g-recaptcha" id="button" type="submit" data-sitekey="reCAPTCHA_site_key" data-callback='onSubmit'    data-action='submit'>Send Message</button>
+    </form>
+    <b>Sample api call</b>
+    <p>127.0.0.1:8000/contact/add?name=reggis&&phone=0610549027&&email=tembachakoregis@gmail.com&&message=Hello+world</p>
+
+    <b>Notes</b><br>
+    <b>1: reCAPTCHA_site_key required</b>
+    <p>Since they is no final domain for this project the recaptcha can't be implemented successfully<br> https://www.google.com/recaptcha/admin/create</p>
+    <b>2: Mail</b> 
+    <p>The form uses a SMTP server to send  emails ,the configs are required to successfully send and receive mail</p>
+</section>
+
+{% endblock %}
